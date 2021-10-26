@@ -5,6 +5,7 @@ import {
 import { Box } from './components/Box';
 import { Header } from './containers/Header';
 import { Footer } from './containers/Footer';
+import { DataTable } from './containers/DataTable';
 
 const App = () => (
     <ChakraProvider theme={theme}>
@@ -19,7 +20,7 @@ const App = () => (
                     <Header />
                 </GridItem>
                 <Box />
-                <Box />
+                <DataTable />
                 <GridItem gridColumn="1 / 3">
                     <Footer />
                 </GridItem>
