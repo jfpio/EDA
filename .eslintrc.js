@@ -4,7 +4,8 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended',
-        'airbnb'
+        'airbnb',
+        'plugin:jest/recommended'
     ],
     parserOptions: {
         ecmaFeatures: {
@@ -14,9 +15,11 @@ module.exports = {
         sourceType: 'module'
     },
     plugins: [
-        'react'
+        'react',
+        'jest'
     ],
     rules: {
+        'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state'] }],
         'arrow-parens': [
             'error',
             'always'

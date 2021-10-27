@@ -7,43 +7,52 @@ import {
     Tr,
     Th,
     Td,
-    Flex
+    Flex, Button
 } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setColumns } from './actions';
+import { datatableColumnsNames } from './selectors';
 
-export const DataTable = () => (
-    <Flex direction="column">
-        <Table variant="simple">
-            <Thead>
-                <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th isNumeric>multiply by</Th>
-                </Tr>
-            </Thead>
-            <Tbody>
-                <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                </Tr>
-                <Tr>
-                    <Td>feet</Td>
-                    <Td>centimetres (cm)</Td>
-                    <Td isNumeric>30.48</Td>
-                </Tr>
-                <Tr>
-                    <Td>yards</Td>
-                    <Td>metres (m)</Td>
-                    <Td isNumeric>0.91444</Td>
-                </Tr>
-            </Tbody>
-            <Tfoot>
-                <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th isNumeric>multiply by</Th>
-                </Tr>
-            </Tfoot>
-        </Table>
-    </Flex>
-);
+export const DataTable = () => {
+    const dispatch = useDispatch();
+    const columnsNames = useSelector(datatableColumnsNames);
+    return (
+        <Flex direction="column">
+            <Button onClick={() => dispatch(setColumns(['a', 'c']))}>Click</Button>
+            {columnsNames}
+            <Table variant="simple">
+                <Thead>
+                    <Tr>
+                        <Th>To convert</Th>
+                        <Th>into</Th>
+                        <Th isNumeric>multiply by</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    <Tr>
+                        <Td>inches</Td>
+                        <Td>millimetres (mm)</Td>
+                        <Td isNumeric>25.4</Td>
+                    </Tr>
+                    <Tr>
+                        <Td>feet</Td>
+                        <Td>centimetres (cm)</Td>
+                        <Td isNumeric>30.48</Td>
+                    </Tr>
+                    <Tr>
+                        <Td>yards</Td>
+                        <Td>metres (m)</Td>
+                        <Td isNumeric>0.91444</Td>
+                    </Tr>
+                </Tbody>
+                <Tfoot>
+                    <Tr>
+                        <Th>To convert</Th>
+                        <Th>into</Th>
+                        <Th isNumeric>multiply by</Th>
+                    </Tr>
+                </Tfoot>
+            </Table>
+        </Flex>
+    );
+};
