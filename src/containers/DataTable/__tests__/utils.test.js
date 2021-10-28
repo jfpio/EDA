@@ -24,7 +24,7 @@ test('check if json data is properly fetched', () => {
     expect(fetchColumnsAndRowsFromJSON(source)).toStrictEqual({ columns, rows });
 });
 
-test('check if json data is properly fetched, with empty object', () => {
+test('check if json data is properly fetched if null', () => {
     const source = [];
     expect(fetchColumnsAndRowsFromJSON(source)).toStrictEqual({ columns: [], rows: [] });
 });

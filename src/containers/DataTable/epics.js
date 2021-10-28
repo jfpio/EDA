@@ -1,18 +1,23 @@
 import { combineEpics, ofType } from 'redux-observable';
 import {
-    ignoreElements, mergeMap, tap
+    map, switchMap
 } from 'rxjs/operators';
 import { fromFetch } from 'rxjs/fetch';
+import { from } from 'rxjs';
 import { GET_JSON_DATA_REQUEST } from './const';
+import { fetchColumnsAndRowsFromJSON } from './utils';
+import { setColumns, setRows } from './actions';
 
 const fetchJSONData = (action$) => action$.pipe(
     ofType(GET_JSON_DATA_REQUEST),
-    mergeMap(() => fromFetch('/movies.json', {
+    switchMap(() => fromFetch('/movies.json', {
         selector: (response) => response.json()
-    }).pipe(
-        tap((a) => console.log(a)),
-        ignoreElements()
-    ))
+    })),
+    map((json) => fetchColumnsAndRowsFromJSON(json)),
+    switchMap(({ rows, columns }) => from([
+        setColumns(columns),
+        setRows(rows)
+    ]))
 );
 
 export const datatableEpics = combineEpics(

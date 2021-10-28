@@ -8,9 +8,10 @@ import { Header } from './containers/Header';
 import { Footer } from './containers/Footer';
 import { DataTable } from './containers/DataTable';
 import { configureAppStore } from './configureStore';
+import { rootReducer } from './rootReducer';
 
 const App = () => (
-    <Provider store={configureAppStore()}>
+    <Provider store={configureAppStore(rootReducer)}>
         <ChakraProvider theme={theme}>
             <Flex h="100vh" p={6}>
                 <Grid
