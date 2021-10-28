@@ -10,7 +10,7 @@ import {
     Flex, Button
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setColumns } from './actions';
+import { getJsonDataRequest } from './actions';
 import { datatableColumnsNames } from './selectors';
 
 export const DataTable = () => {
@@ -18,7 +18,9 @@ export const DataTable = () => {
     const columnsNames = useSelector(datatableColumnsNames);
     return (
         <Flex direction="column">
-            <Button onClick={() => dispatch(setColumns(['a', 'c']))}>Click</Button>
+            <Button onClick={() => dispatch(getJsonDataRequest())}>
+                Click
+            </Button>
             {columnsNames}
             <Table variant="simple">
                 <Thead>
