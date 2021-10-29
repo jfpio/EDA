@@ -10,12 +10,12 @@ import {
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getJsonDataRequest } from '../../redux/sourceData/actions';
-import { datatableColumnsNames, datatableRowsByColumnNames } from '../../redux/sourceData/selectors';
+import { columnsNamesSelector, rowsByColumnNamesSelector } from '../../redux/sourceData/selectors';
 
 export const DataTable = () => {
     const dispatch = useDispatch();
-    const columnsNames = useSelector(datatableColumnsNames);
-    const rows = useSelector(datatableRowsByColumnNames);
+    const columnsNames = useSelector(columnsNamesSelector);
+    const rows = useSelector(rowsByColumnNamesSelector);
     return (
         <Flex direction="column" overflow="auto">
             <Button onClick={() => dispatch(getJsonDataRequest('/movies.json'))}>

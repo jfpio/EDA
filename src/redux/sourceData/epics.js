@@ -16,7 +16,7 @@ const fetchJSONData = (action$) => action$.pipe(
     })),
     map((json) => fetchColumnsAndRowsFromJSON(json)),
     switchMap(({ rows, columns }) => from([
-        setColumns(new Set(columns)),
+        setColumns(columns),
         setRows(rows)
     ])),
     catchError((e) => console.log(e))
