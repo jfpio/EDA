@@ -10,7 +10,7 @@ import { setColumns, setRows } from './actions';
 
 const fetchJSONData = (action$) => action$.pipe(
     ofType(GET_JSON_DATA_REQUEST),
-    switchMap(() => fromFetch('/movies.json', {
+    switchMap(({ url }) => fromFetch(url, {
         selector: (response) => response.json()
     })),
     map((json) => fetchColumnsAndRowsFromJSON(json)),

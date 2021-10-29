@@ -18,7 +18,7 @@ export const DataTable = () => {
     const rows = useSelector(datatableRowsByColumnNames);
     return (
         <Flex direction="column" overflow="auto">
-            <Button onClick={() => dispatch(getJsonDataRequest())}>
+            <Button onClick={() => dispatch(getJsonDataRequest('/movies.json'))}>
                 Click
             </Button>
             <Table variant="striped">
