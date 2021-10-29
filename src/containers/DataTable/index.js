@@ -17,7 +17,7 @@ export const DataTable = () => {
     const columnsNames = useSelector(datatableColumnsNames);
     const rows = useSelector(datatableRowsByColumnNames);
     return (
-        <Flex direction="column">
+        <Flex direction="column" overflow="auto">
             <Button onClick={() => dispatch(getJsonDataRequest())}>
                 Click
             </Button>
