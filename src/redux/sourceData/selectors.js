@@ -9,15 +9,15 @@ export const columnsNamesSelector = createSelector(
     (datatableReducer) => datatableReducer.columns
 );
 
-export const rowsByColumnNamesSelector = createSelector(
-    sourceDataSelector,
-    columnsNamesSelector,
-    (datatableReducer, datatableColumnsNames) => datatableReducer.rows.map((row) => props(datatableColumnsNames, row))
-);
-
 export const visibleColumnsNamesSelector = createSelector(
     sourceDataSelector,
     (datatableReducer) => datatableReducer.visibleColumns
+);
+
+export const rowsByVisibleColumnNamesSelector = createSelector(
+    sourceDataSelector,
+    visibleColumnsNamesSelector,
+    (datatableReducer, datatableColumnsNames) => datatableReducer.rows.map((row) => props(datatableColumnsNames, row))
 );
 
 export const invisibleColumnsNamesSelector = createSelector(
