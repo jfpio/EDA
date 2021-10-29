@@ -9,8 +9,8 @@ import {
     Flex, Button
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getJsonDataRequest } from './actions';
-import { datatableColumnsNames, datatableRowsByColumnNames } from './selectors';
+import { getJsonDataRequest } from '../../redux/sourceData/actions';
+import { datatableColumnsNames, datatableRowsByColumnNames } from '../../redux/sourceData/selectors';
 
 export const DataTable = () => {
     const dispatch = useDispatch();

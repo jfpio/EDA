@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack, Tag } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { datatableColumnsNames } from '../DataTable/selectors';
+import { datatableColumnsNames } from '../../redux/sourceData/selectors';
 
 export const MetaDrawer = () => {
     const columnsNames = useSelector(datatableColumnsNames);

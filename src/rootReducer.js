@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { datatableReducer, DATATABLE_REDUCER_NAME } from './containers/DataTable/reducer';
+import { sourceDataReducer, SOURCE_DATA_REDUCER_NAME } from './redux/sourceData/reducer';
 
 export const rootReducer = combineReducers({
-    [DATATABLE_REDUCER_NAME]: datatableReducer
+    [SOURCE_DATA_REDUCER_NAME]: sourceDataReducer
 });

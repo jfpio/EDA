@@ -6,8 +6,8 @@ const initialState = {
     rows: []
 };
 
-export const DATATABLE_REDUCER_NAME = 'datatableReducer';
-export const datatableReducer = createReducer(initialState, (builder) => {
+export const SOURCE_DATA_REDUCER_NAME = 'sourceDataReducer';
+export const sourceDataReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(SET_COLUMNS, (state, { columnsNames }) => {
             state.columns = columnsNames;
