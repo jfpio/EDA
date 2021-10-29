@@ -1,5 +1,6 @@
 import { combineEpics, ofType } from 'redux-observable';
 import {
+    catchError,
     map, switchMap
 } from 'rxjs/operators';
 import { fromFetch } from 'rxjs/fetch';
@@ -15,9 +16,10 @@ const fetchJSONData = (action$) => action$.pipe(
     })),
     map((json) => fetchColumnsAndRowsFromJSON(json)),
     switchMap(({ rows, columns }) => from([
-        setColumns(columns),
+        setColumns(new Set(columns)),
         setRows(rows)
-    ]))
+    ])),
+    catchError((e) => console.log(e))
 );
 
 export const datatableEpics = combineEpics(

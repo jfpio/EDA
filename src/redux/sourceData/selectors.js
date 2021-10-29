@@ -6,7 +6,7 @@ export const datatableSelector = (state) => state[SOURCE_DATA_REDUCER_NAME];
 
 export const datatableColumnsNames = createSelector(
     datatableSelector,
-    (datatableReducer) => datatableReducer.columns
+    (datatableReducer) => Array.from(datatableReducer.columns)
 );
 
 export const datatableRowsByColumnNames = createSelector(

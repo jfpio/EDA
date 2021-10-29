@@ -1,8 +1,8 @@
 import { GET_JSON_DATA_REQUEST, SET_COLUMNS, SET_ROWS } from './const';
 
-export const setColumns = (columnsNames) => ({
+export const setColumns = (columnsNamesSet) => ({
     type: SET_COLUMNS,
-    columnsNames
+    columnsNamesSet
 });
 
 export const setRows = (rows) => ({
