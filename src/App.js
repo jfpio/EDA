@@ -18,7 +18,7 @@ const App = () => (
             <DndProvider backend={HTML5Backend}>
                 <Flex h="100vh" p={6}>
                     <Grid
-                        gridTemplateRows="100px 1fr 100px"
+                        gridTemplateRows="100px 1fr 50px"
                         templateColumns="200px 1fr"
                         gridGap={1}
                         width="100%"
