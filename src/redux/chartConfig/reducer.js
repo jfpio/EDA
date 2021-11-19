@@ -1,9 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { SET_FIELD } from './const';
+import { ENCODING_FIELDS, SET_FIELD } from './const';
 
 const initialState = {
-    x: null,
-    y: null
+    [ENCODING_FIELDS.X]: null,
+    [ENCODING_FIELDS.Y]: null
 };
 
 export const CHART_CONFIG_REDUCER_NAME = 'chartConfigReducer';

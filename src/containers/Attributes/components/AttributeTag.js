@@ -8,10 +8,11 @@ import { ItemTypes } from '../../../DnD';
 export const AttributeTag = ({ active, label, onClick }) => {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: ItemTypes.ATTRIBUTE,
+        item: { name: label },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
         })
-    }));
+    }), [label]);
 
     return (
         <Tag ref={drag} key={label} colorScheme={isDragging ? 'cyan' : 'gray'} onClick={onClick}>
