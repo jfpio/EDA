@@ -5,10 +5,10 @@ import {
 import { Provider } from 'react-redux';
 import { Header } from './containers/Header';
 import { Footer } from './containers/Footer';
-import { DataTable } from './containers/DataTable';
 import { configureAppStore } from './configureStore';
 import { rootReducer } from './rootReducer';
 import { MetaDrawer } from './containers/MetaDrawer';
+import { WorkingSpace } from './containers/WorkingSpace';
 
 const App = () => (
     <Provider store={configureAppStore(rootReducer)}>
@@ -24,7 +24,7 @@ const App = () => (
                         <Header />
                     </GridItem>
                     <MetaDrawer />
-                    <DataTable />
+                    <WorkingSpace />
                     <GridItem gridColumn="1 / 3">
                         <Footer />
                     </GridItem>
