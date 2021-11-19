@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { pipe } from 'ramda';
 import { rowsSelector } from '../../redux/sourceData/selectors';
 
-export const ChartSpace = () => {
+export const ChartSpace = () => { // TODO Make component
     const rows = useSelector(rowsSelector);
     const spec = {
         width: 400,

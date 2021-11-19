@@ -7,8 +7,8 @@ import { Header } from './containers/Header';
 import { Footer } from './containers/Footer';
 import { configureAppStore } from './configureStore';
 import { rootReducer } from './rootReducer';
-import { MetaDrawer } from './containers/MetaDrawer';
 import { WorkingSpace } from './containers/WorkingSpace';
+import { DataSourceDrawer } from './containers/DataSourceDrawer';
 
 const App = () => (
     <Provider store={configureAppStore(rootReducer)}>
@@ -23,7 +23,7 @@ const App = () => (
                     <GridItem gridColumn="1 / 3">
                         <Header />
                     </GridItem>
-                    <MetaDrawer />
+                    <DataSourceDrawer />
                     <WorkingSpace />
                     <GridItem gridColumn="1 / 3">
                         <Footer />

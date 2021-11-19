@@ -5,13 +5,13 @@ import { invisibleColumnsNamesSelector, visibleColumnsNamesSelector } from '../.
 import { ColumnTag } from './components/ColumnTag';
 import { addColumnToVisibleColumnNames, removeColumnFromVisibleColumnNames } from '../../redux/sourceData/actions';
 
-export const MetaDrawer = () => {
+export const Attributes = () => {
     const visibleColumnsNames = useSelector(visibleColumnsNamesSelector);
     const invisibleColumnsNames = useSelector(invisibleColumnsNamesSelector);
     const dispatch = useDispatch();
 
     return (
-        <Stack w="full" h="full" p={4}>
+        <Stack w="full" h="full" p={2}>
             {
                 visibleColumnsNames.map((name) => (
                     <ColumnTag

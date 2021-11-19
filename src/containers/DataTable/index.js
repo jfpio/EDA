@@ -6,29 +6,26 @@ import {
     Tr,
     Th,
     Td,
-    Flex, Button
+    Flex
 } from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getJsonDataRequest } from '../../redux/sourceData/actions';
+import { useSelector } from 'react-redux';
 import {
     rowsByVisibleColumnNamesSelector,
     visibleColumnsNamesSelector
 } from '../../redux/sourceData/selectors';
 
 export const DataTable = () => {
-    const dispatch = useDispatch();
     const columnsNames = useSelector(visibleColumnsNamesSelector);
     const rows = useSelector(rowsByVisibleColumnNamesSelector);
     return (
         <Flex direction="column" overflow="auto">
-            <Button onClick={() => dispatch(getJsonDataRequest('/movies.json'))}>
-                Click
-            </Button>
             <Table variant="striped">
                 <Thead>
                     <Tr>
                         {
-                            columnsNames.map((columnName) => <Th key={columnName}>{columnName}</Th>)
+                            (columnsNames.length === 0) ? (
+                                <Th>By wyświetlić tabelę załaduj dane</Th>
+                            ) : columnsNames.map((columnName) => <Th key={columnName}>{columnName}</Th>)
                         }
                     </Tr>
                 </Thead>
