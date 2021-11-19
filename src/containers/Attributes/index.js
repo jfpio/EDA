@@ -1,33 +1,20 @@
 import React from 'react';
 import { Stack } from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { invisibleColumnsNamesSelector, visibleColumnsNamesSelector } from '../../redux/sourceData/selectors';
-import { ColumnTag } from './components/ColumnTag';
-import { addColumnToVisibleColumnNames, removeColumnFromVisibleColumnNames } from '../../redux/sourceData/actions';
+import { useSelector } from 'react-redux';
+import { visibleColumnsNamesSelector } from '../../redux/sourceData/selectors';
+import { AttributeTag } from './components/AttributeTag';
 
 export const Attributes = () => {
     const visibleColumnsNames = useSelector(visibleColumnsNamesSelector);
-    const invisibleColumnsNames = useSelector(invisibleColumnsNamesSelector);
-    const dispatch = useDispatch();
 
     return (
         <Stack w="full" h="full" p={2}>
             {
                 visibleColumnsNames.map((name) => (
-                    <ColumnTag
+                    <AttributeTag
                         key={name}
                         active
                         label={name}
-                        onClick={() => dispatch(removeColumnFromVisibleColumnNames(name))}
-                    />
-                ))
-            }
-            {
-                invisibleColumnsNames.map((name) => (
-                    <ColumnTag
-                        key={name}
-                        label={name}
-                        onClick={() => dispatch(addColumnToVisibleColumnNames(name))}
                     />
                 ))
             }
