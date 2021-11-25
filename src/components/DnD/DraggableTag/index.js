@@ -1,20 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    Tag, TagLabel, TagLeftIcon, TagRightIcon
-} from '@chakra-ui/react';
+import { Tag } from '@chakra-ui/react';
 import { useDrag } from 'react-dnd';
-import { isEmpty } from 'ramda';
-import { DnDItemTypes } from '../../../DnD';
 
 export const DraggableTag = ({
     tagId,
-    label,
+    children,
     color,
     draggingColor,
-    itemTypeKey,
-    leftIcon,
-    rightIcon
+    itemTypeKey
 }) => {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: itemTypeKey,
@@ -30,29 +24,20 @@ export const DraggableTag = ({
             key={tagId}
             colorScheme={isDragging ? draggingColor : color}
         >
-            {!isEmpty(leftIcon) && (<TagLeftIcon as={leftIcon} />)}
-            <TagLabel>
-                {label}
-            </TagLabel>
-            {!isEmpty(rightIcon) && (<TagRightIcon as={leftIcon} />)}
+            {children}
         </Tag>
     );
 };
 
 DraggableTag.propTypes = {
     tagId: PropTypes.string.isRequired,
-    label: PropTypes.string,
+    children: PropTypes.node.isRequired,
     color: PropTypes.string,
     draggingColor: PropTypes.string,
-    itemTypeKey: PropTypes.oneOf(Object.values(DnDItemTypes)).isRequired,
-    leftIcon: PropTypes.string,
-    rightIcon: PropTypes.string
+    itemTypeKey: PropTypes.string.isRequired
 };
 
 DraggableTag.defaultProps = {
-    label: '',
     color: 'gray',
-    draggingColor: 'cyan',
-    leftIcon: '',
-    rightIcon: ''
+    draggingColor: 'cyan'
 };
