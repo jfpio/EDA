@@ -3,7 +3,7 @@ import { Stack, Tag } from '@chakra-ui/react';
 import { useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 import { isNil } from 'ramda';
-import { ItemTypes } from '../../DnD';
+import { DnDItemTypes } from '../../DnD';
 import { xFieldSelector } from '../../redux/chartConfig/selectors';
 import { setField } from '../../redux/chartConfig/actions';
 import { ENCODING_FIELDS } from '../../redux/chartConfig/const';
@@ -13,7 +13,7 @@ export const ChartConfigDrawer = () => {
     const xField = useSelector(xFieldSelector);
     const [{ isOver }, drop] = useDrop(
         () => ({
-            accept: ItemTypes.ATTRIBUTE,
+            accept: DnDItemTypes.ATTRIBUTE,
             drop: ({ name }) => dispatch(setField(ENCODING_FIELDS.X, name)),
             collect: (monitor) => ({
                 isOver: !!monitor.isOver()

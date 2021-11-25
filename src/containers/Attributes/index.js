@@ -2,7 +2,8 @@ import React from 'react';
 import { Stack } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { visibleColumnsNamesSelector } from '../../redux/sourceData/selectors';
-import { AttributeTag } from './components/AttributeTag';
+import { DraggableTag } from '../../components/DnD/DraggableTag/DraggableTag';
+import { DnDItemTypes } from '../../DnD';
 
 export const Attributes = () => {
     const visibleColumnsNames = useSelector(visibleColumnsNamesSelector);
@@ -11,10 +12,10 @@ export const Attributes = () => {
         <Stack w="full" h="full" p={2}>
             {
                 visibleColumnsNames.map((name) => (
-                    <AttributeTag
-                        key={name}
-                        active
+                    <DraggableTag
+                        tagId={name}
                         label={name}
+                        itemTypeKey={DnDItemTypes.ATTRIBUTE}
                     />
                 ))
             }
