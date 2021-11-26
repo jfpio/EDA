@@ -5,20 +5,25 @@ import { wrapWithBackend } from 'react-dnd-test-utils';
 import { DraggableTag } from '../index';
 
 const name = 'Test of draggable tag';
+const TestDraggableTag = wrapWithBackend(DraggableTag);
+const DraggableTagElementWithLabel = () => (
+    <TestDraggableTag
+        tagId="test"
+        itemTypeKey="testkey"
+    >
+        <TagLabel>
+            {name}
+        </TagLabel>
+    </TestDraggableTag>
+);
 
 describe('DraggableTag', () => {
-    it('Display a label', () => {
-        const TestDraggableTag = wrapWithBackend(DraggableTag);
-        render(
-            <TestDraggableTag
-                tagId="test"
-                itemTypeKey="testkey"
-            >
-                <TagLabel>
-                    {name}
-                </TagLabel>
-            </TestDraggableTag>
-        );
+    it('should display a children', () => {
+        render(<DraggableTagElementWithLabel />);
         expect(screen.getByText(name)).toBeInTheDocument();
+    });
+    it('should be draggable', () => {
+        const { container } = render(<DraggableTagElementWithLabel />);
+        expect(container.firstChild).toHaveProperty('draggable');
     });
 });
