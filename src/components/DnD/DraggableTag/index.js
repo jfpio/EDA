@@ -8,7 +8,8 @@ export const DraggableTag = ({
     children,
     color,
     draggingColor,
-    itemTypeKey
+    itemTypeKey,
+    grow
 }) => {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: itemTypeKey,
@@ -23,6 +24,7 @@ export const DraggableTag = ({
             ref={drag}
             key={tagId}
             colorScheme={isDragging ? draggingColor : color}
+            flexGrow={grow ? 1 : 0}
         >
             {children}
         </Tag>
@@ -34,10 +36,12 @@ DraggableTag.propTypes = {
     children: PropTypes.node.isRequired,
     color: PropTypes.string,
     draggingColor: PropTypes.string,
-    itemTypeKey: PropTypes.string.isRequired
+    itemTypeKey: PropTypes.string.isRequired,
+    grow: PropTypes.bool
 };
 
 DraggableTag.defaultProps = {
     color: 'gray',
-    draggingColor: 'cyan'
+    draggingColor: 'cyan',
+    grow: false
 };
