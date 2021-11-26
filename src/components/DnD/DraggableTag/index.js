@@ -9,14 +9,22 @@ export const DraggableTag = ({
     color,
     draggingColor,
     itemTypeKey,
-    grow
+    grow,
+    onDropOutsideDropzone
 }) => {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: itemTypeKey,
         item: { tagId },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
-        })
+        }),
+        end: (item, monitor) => {
+            const { tagId } = item;
+            const didDrop = monitor.didDrop();
+            if (!didDrop) {
+                onDropOutsideDropzone(tagId);
+            }
+        }
     }), [tagId, itemTypeKey]);
 
     return (
@@ -37,11 +45,13 @@ DraggableTag.propTypes = {
     color: PropTypes.string,
     draggingColor: PropTypes.string,
     itemTypeKey: PropTypes.string.isRequired,
-    grow: PropTypes.bool
+    grow: PropTypes.bool,
+    onDropOutsideDropzone: PropTypes.func
 };
 
 DraggableTag.defaultProps = {
     color: 'gray',
     draggingColor: 'cyan',
-    grow: false
+    grow: false,
+    onDropOutsideDropzone: () => {}
 };
