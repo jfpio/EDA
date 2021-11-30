@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tag } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { useDrag } from 'react-dnd';
 
 export const DraggableTag = ({
@@ -28,14 +28,23 @@ export const DraggableTag = ({
     }), [tagId, itemTypeKey]);
 
     return (
-        <Tag // TODO mofidy to Box and add tests add boxshadow
+        <Box
             ref={drag}
             key={tagId}
-            colorScheme={isDragging ? draggingColor : color}
             flexGrow={grow ? 1 : 0}
+            borderRadius="lg"
+            overflow="wrap"
+            p={1}
+            shadow="lg"
+            borderWidth={1}
+            bg={isDragging ? draggingColor : color}
         >
-            {children}
-        </Tag>
+            <Text
+                fontSize="sm"
+            >
+                {children}
+            </Text>
+        </Box>
     );
 };
 
@@ -50,8 +59,8 @@ DraggableTag.propTypes = {
 };
 
 DraggableTag.defaultProps = {
-    color: 'gray',
-    draggingColor: 'cyan',
+    color: 'white',
+    draggingColor: 'cyan.100',
     grow: false,
     onDropOutsideDropzone: () => {}
 };

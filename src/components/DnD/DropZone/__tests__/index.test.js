@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { TagLabel } from '@chakra-ui/react';
 import { wrapWithBackend } from 'react-dnd-test-utils';
 import { Dropzone } from '../index';
 import { DraggableTag } from '../../DraggableTag';
@@ -14,9 +13,7 @@ const DraggableTagElementWithLabel = () => (
         tagId="test"
         itemTypeKey="testkey"
     >
-        <TagLabel>
-            {name}
-        </TagLabel>
+        {name}
     </TestDraggableTag>
 );
 

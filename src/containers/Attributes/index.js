@@ -9,7 +9,7 @@ export const Attributes = () => {
     const visibleColumnsNames = useSelector(visibleColumnsNamesSelector);
 
     return (
-        <Stack w="full" h="full" p={2}>
+        <Stack w="full" h="full" p={2} bg="gray.50" borderRadius="lg">
             {
                 visibleColumnsNames.map((name) => (
                     <DraggableTag
