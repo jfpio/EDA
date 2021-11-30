@@ -5,3 +5,11 @@ export const ENCODING_FIELDS = {
     ROW: 'ROW',
     COLUMN: 'COLUMN'
 };
+
+export const MARKS_FIELDS = {
+    SIZE: 'SIZE',
+    COLOR: 'COLOR',
+    SHAPE: 'SHAPE',
+    DETAIL: 'DETAIL',
+    TEXT: 'TEXT'
+};
