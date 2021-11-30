@@ -1,7 +1,7 @@
 import { SET_FIELD } from './const';
 
-export const setField = (field, attributeName) => ({
+export const setField = (fieldId, attributeId) => ({
     type: SET_FIELD,
-    field,
-    attributeName
+    fieldId,
+    attributeId
 });

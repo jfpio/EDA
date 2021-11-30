@@ -33,7 +33,16 @@ export const Dropzone = ({
     };
 
     return (
-        <Box display="flex" ref={drop} bgColor={boxColor} w="100%" p={1} borderRadius="lg">
+        <Box
+            display="flex"
+            ref={drop}
+            bgColor={boxColor}
+            w="100%"
+            p={1}
+            borderRadius="lg"
+            minHeight={8}
+            alignItems="center"
+        >
             {children}
         </Box>
 

@@ -28,7 +28,7 @@ export const DraggableTag = ({
     }), [tagId, itemTypeKey]);
 
     return (
-        <Tag
+        <Tag // TODO mofidy to Box and add tests add boxshadow
             ref={drag}
             key={tagId}
             colorScheme={isDragging ? draggingColor : color}

@@ -9,7 +9,7 @@ const initialState = {
 export const CHART_CONFIG_REDUCER_NAME = 'chartConfigReducer';
 export const chartConfigReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(SET_FIELD, (state, { field, attributeName }) => {
-            state[field] = attributeName;
+        .addCase(SET_FIELD, (state, { fieldId, attributeId }) => {
+            state[fieldId] = attributeId;
         });
 });
