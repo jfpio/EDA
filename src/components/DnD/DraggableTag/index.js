@@ -8,9 +8,10 @@ export const DraggableTag = ({
     children,
     color,
     draggingColor,
+    textColor,
     itemTypeKey,
-    grow,
-    onDropOutsideDropzone
+    onDropOutsideDropzone,
+    grow
 }) => {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: itemTypeKey,
@@ -31,16 +32,16 @@ export const DraggableTag = ({
         <Box
             ref={drag}
             key={tagId}
-            flexGrow={grow ? 1 : 0}
-            borderRadius="lg"
-            overflow="wrap"
             p={1}
+            borderRadius="lg"
             shadow="lg"
             borderWidth={1}
             bg={isDragging ? draggingColor : color}
+            flexGrow={grow ? 1 : 0}
         >
             <Text
                 fontSize="sm"
+                color={textColor}
             >
                 {children}
             </Text>
@@ -54,13 +55,15 @@ DraggableTag.propTypes = {
     color: PropTypes.string,
     draggingColor: PropTypes.string,
     itemTypeKey: PropTypes.string.isRequired,
-    grow: PropTypes.bool,
-    onDropOutsideDropzone: PropTypes.func
+    onDropOutsideDropzone: PropTypes.func,
+    textColor: PropTypes.string,
+    grow: PropTypes.bool
 };
 
 DraggableTag.defaultProps = {
     color: 'white',
     draggingColor: 'cyan.100',
-    grow: false,
-    onDropOutsideDropzone: () => {}
+    textColor: 'black',
+    onDropOutsideDropzone: () => {},
+    grow: true
 };
