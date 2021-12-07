@@ -4,6 +4,8 @@ import {
     fireEvent, render, screen
 } from '@testing-library/react';
 import { wrapWithBackend } from 'react-dnd-test-utils';
+import { SearchIcon } from '@chakra-ui/icons';
+import { IconButton } from '@chakra-ui/react';
 import { DraggableTag } from '../index';
 
 const name = 'Test of draggable tag';
@@ -21,6 +23,39 @@ describe('DraggableTag', () => {
     it('should display a children', () => {
         render(<DraggableTagElementWithLabel />);
         expect(screen.getByText(name)).toBeInTheDocument();
+    });
+    it('should display a icon', () => {
+        const searchIconName = 'search-icon';
+        render(
+            <TestDraggableTag
+                tagId="test"
+                itemTypeKey="testkey"
+                icon={<SearchIcon data-testid={searchIconName} />}
+            >
+                {name}
+            </TestDraggableTag>
+        );
+        expect(screen.getByTestId(searchIconName)).toBeInTheDocument();
+    });
+    it('should display a icon button', () => {
+        const searchIconButtonName = 'search-icon-button';
+        const testAriaLabel = 'test aria label';
+        render(
+            <TestDraggableTag
+                tagId="test"
+                itemTypeKey="testkey"
+                icon={(
+                    <IconButton
+                        aria-label={testAriaLabel}
+                        icon={<SearchIcon data-testid={searchIconButtonName} />}
+                    />
+                )}
+            >
+                {name}
+            </TestDraggableTag>
+        );
+        expect(screen.getByTestId(searchIconButtonName)).toBeInTheDocument();
+        expect(screen.getByLabelText(testAriaLabel)).toBeInTheDocument();
     });
     it('should be draggable', () => {
         const { container } = render(<DraggableTagElementWithLabel />);

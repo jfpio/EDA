@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text } from '@chakra-ui/react';
+import { HStack, Text } from '@chakra-ui/react';
 import { useDrag } from 'react-dnd';
 
 export const DraggableTag = ({
     tagId,
     children,
+    icon,
     color,
     draggingColor,
     textColor,
@@ -29,29 +30,33 @@ export const DraggableTag = ({
     }), [tagId, itemTypeKey]);
 
     return (
-        <Box
+        <HStack
             ref={drag}
             key={tagId}
-            p={1}
+            py={1}
+            px={2}
             borderRadius="lg"
             shadow="lg"
             borderWidth={1}
             bg={isDragging ? draggingColor : color}
             flexGrow={grow ? 1 : 0}
+            spacing={2}
         >
+            {icon}
             <Text
                 fontSize="sm"
                 color={textColor}
             >
                 {children}
             </Text>
-        </Box>
+        </HStack>
     );
 };
 
 DraggableTag.propTypes = {
     tagId: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
+    icon: PropTypes.element,
     color: PropTypes.string,
     draggingColor: PropTypes.string,
     itemTypeKey: PropTypes.string.isRequired,
@@ -61,6 +66,7 @@ DraggableTag.propTypes = {
 };
 
 DraggableTag.defaultProps = {
+    icon: null,
     color: 'white',
     draggingColor: 'cyan.100',
     textColor: 'black',
