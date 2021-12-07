@@ -13,3 +13,10 @@ export const MARKS_FIELDS = {
     DETAIL: 'DETAIL',
     TEXT: 'TEXT'
 };
+
+export const VEGA_DATA_TYPES = {
+    NOMINAL: 'NOMINAL',
+    ORDINAL: 'ORDINAL',
+    QUANTITATIVE: 'QUANTITATIVE',
+    TEMPORAL: 'TEMPORAL'
+};
