@@ -40,7 +40,7 @@ export const Dropzone = ({
             w="100%"
             p={1}
             borderRadius="lg"
-            minHeight={8}
+            minHeight={10}
             alignItems="center"
         >
             {children}
