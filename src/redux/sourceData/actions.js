@@ -1,7 +1,7 @@
 import {
     ADD_COLUMN_TO_VISIBLE_COLUMNS_NAMES,
     GET_JSON_DATA_REQUEST,
-    REMOVE_COLUMN_FROM_VISIBLE_COLUMNS_NAMES,
+    REMOVE_COLUMN_FROM_VISIBLE_COLUMNS_NAMES, SET_ATTRIBUTE_TYPE,
     SET_COLUMNS,
     SET_ROWS
 } from './const';
@@ -29,4 +29,10 @@ export const setRows = (rows) => ({
 export const getJsonDataRequest = (url) => ({
     type: GET_JSON_DATA_REQUEST,
     url
+});
+
+export const setAttributeType = (attributeId, newType) => ({
+    type: SET_ATTRIBUTE_TYPE,
+    attributeId,
+    newType
 });

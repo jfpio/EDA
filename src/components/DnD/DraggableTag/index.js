@@ -71,5 +71,5 @@ DraggableTag.defaultProps = {
     draggingColor: 'cyan.100',
     textColor: 'black',
     onDropOutsideDropzone: () => {},
-    grow: true
+    grow: false
 };

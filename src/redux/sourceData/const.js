@@ -5,3 +5,5 @@ export const REMOVE_COLUMN_FROM_VISIBLE_COLUMNS_NAMES = 'sourceData/REMOVE_COLUM
 export const SET_ROWS = 'sourceData/SET_ROWS';
 
 export const GET_JSON_DATA_REQUEST = 'sourceData/GET_JSON_DATA_REQUEST';
+
+export const SET_ATTRIBUTE_TYPE = 'sureceData/SET_ATTRIBUTE_TYPE';

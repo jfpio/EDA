@@ -4,7 +4,7 @@ import {
 } from './const';
 
 const initialState = {
-    dataTableView: true
+    dataTableView: false
 };
 
 export const WORKING_SPACE_REDUCER_NAME = 'workingSpaceReducer';
