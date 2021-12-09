@@ -6,8 +6,7 @@ import { pipe } from 'ramda';
 
 export const VegaCharts = ({ data }) => {
     const spec = {
-        width: 400,
-        height: 400,
+        autosize: { type: 'pad' },
         mark: 'circle',
         encoding: {
             x: { field: 'Title', type: 'ordinal' },
@@ -23,7 +22,7 @@ export const VegaCharts = ({ data }) => {
     const deepClone = pipe(JSON.stringify, JSON.parse); // TODO I don't know why, but without this vega don't work for data from redux
 
     return (
-        <Flex direction="column" overflow="auto">
+        <Flex direction="column" overflow="auto" justify="center" grow={1}>
             <VegaLite spec={spec} data={deepClone(chartData)} />
         </Flex>
     );
