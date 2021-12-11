@@ -1,5 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { props, values, without } from 'ramda';
+import {
+    pipe, props, values, without
+} from 'ramda';
 import { SOURCE_DATA_REDUCER_NAME } from './reducer';
 
 export const sourceDataSelector = (state) => state[SOURCE_DATA_REDUCER_NAME];
@@ -11,7 +13,8 @@ export const columnsNamesSelector = createSelector(
 
 export const rowsSelector = createSelector(
     sourceDataSelector,
-    (datatableReducer) => datatableReducer.rows
+    // Without deepcloning the error occurs on the vega component
+    (datatableReducer) => pipe(JSON.stringify, JSON.parse)(datatableReducer.rows)
 );
 
 export const visibleColumnsNamesSelector = createSelector(

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Flex } from '@chakra-ui/react';
 import { VegaLite } from 'react-vega';
-import { pipe } from 'ramda';
 
 export const VegaCharts = ({ data }) => {
     const spec = {
@@ -19,11 +18,9 @@ export const VegaCharts = ({ data }) => {
         table: data
     };
 
-    const deepClone = pipe(JSON.stringify, JSON.parse); // TODO I don't know why, but without this vega don't work for data from redux
-
     return (
         <Flex direction="column" overflow="auto" justify="center" grow={1}>
-            <VegaLite spec={spec} data={deepClone(chartData)} />
+            <VegaLite spec={spec} data={chartData} />
         </Flex>
     );
 };
