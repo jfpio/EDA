@@ -3,6 +3,6 @@ import { Heading } from '@chakra-ui/react';
 
 export const Header = () => (
     <Heading as="h1" size="2xl">
-        Eksploracyjna Analiza Danych
+        Exploratory Data Analysis
     </Heading>
 );

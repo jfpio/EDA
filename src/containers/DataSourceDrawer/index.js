@@ -11,10 +11,10 @@ export const DataSourceDrawer = () => {
     return (
         <Stack w="full" h="full" p={2}>
             <Button onClick={() => dispatch(toggleView())} colorScheme="teal">
-                Przełącz widok
+                Switch View
             </Button>
             <Button onClick={() => dispatch(getJsonDataRequest('/movies.json'))}>
-                Załaduj dane
+                Load Data
             </Button>
             <Attributes />
         </Stack>
