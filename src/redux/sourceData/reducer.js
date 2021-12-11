@@ -1,33 +1,38 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { defaultTo, mapObjIndexed } from 'ramda';
 import {
     ADD_COLUMN_TO_VISIBLE_COLUMNS_NAMES,
     REMOVE_COLUMN_FROM_VISIBLE_COLUMNS_NAMES,
     SET_ATTRIBUTE_TYPE,
-    SET_COLUMNS,
+    SET_COLUMNS, SET_RECOMMENDED_DATATYPES_TO_COLUMNS,
     SET_ROWS
 } from './const';
 import { VEGA_DATA_TYPES } from '../vegaEncoding/const';
+import { getRecommendedDatatype } from './utils';
 
 const initialState = {
-    columns: [],
+    attributes: [],
+    attributesTypes: {},
     visibleColumns: [],
-    rows: [],
-    attributes: {}
+    rows: []
 };
 
 export const SOURCE_DATA_REDUCER_NAME = 'sourceDataReducer';
 export const sourceDataReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(SET_COLUMNS, (state, { columnsNames }) => {
-            state.columns = columnsNames;
+            state.attributes = columnsNames;
             state.visibleColumns = columnsNames;
-            state.attributes = columnsNames.reduce((acc, name) => ({
+            state.attributesTypes = columnsNames.reduce((acc, name) => ({
                 ...acc,
-                [name]: { id: name, datatype: VEGA_DATA_TYPES.NOMINAL }
+                [name]: VEGA_DATA_TYPES.NOMINAL
             }), {});
         })
         .addCase(SET_ROWS, (state, { rows }) => {
-            state.rows = rows.slice(0, 100);
+            state.rows = rows;
+        })
+        .addCase(SET_RECOMMENDED_DATATYPES_TO_COLUMNS, (state) => {
+            state.attributesTypes = mapObjIndexed((_, id) => getRecommendedDatatype(defaultTo({}, state.rows[0])[id]), state.attributesTypes);
         })
         .addCase(ADD_COLUMN_TO_VISIBLE_COLUMNS_NAMES, (state, { columnName }) => {
             state.visibleColumns.push(columnName);
@@ -36,6 +41,6 @@ export const sourceDataReducer = createReducer(initialState, (builder) => {
             state.visibleColumns = state.visibleColumns.filter((name) => name !== columnName);
         })
         .addCase(SET_ATTRIBUTE_TYPE, (state, { attributeId, newType }) => {
-            state.attributes[attributeId].datatype = newType;
+            state.attributesTypes[attributeId].datatype = newType;
         });
 });
