@@ -1,13 +1,17 @@
 import { combineEpics, ofType } from 'redux-observable';
 import {
     catchError,
-    map, switchMap
+    map,
+    switchMap,
+    mapTo
 } from 'rxjs/operators';
 import { fromFetch } from 'rxjs/fetch';
 import { from } from 'rxjs';
-import { GET_JSON_DATA_REQUEST } from './const';
+import {
+    GET_JSON_DATA_REQUEST, SET_COLUMNS, SET_ROWS
+} from './const';
 import { fetchColumnsAndRowsFromJSON } from './utils';
-import { setColumns, setRows } from './actions';
+import { setColumns, setRecommendedDatatypesToColumns, setRows } from './actions';
 
 const fetchJSONData = (action$) => action$.pipe(
     ofType(GET_JSON_DATA_REQUEST),
@@ -22,6 +26,12 @@ const fetchJSONData = (action$) => action$.pipe(
     catchError((e) => console.log(e))
 );
 
+const fetchRecommendedDatatypesToColumns = (action$) => action$.pipe(
+    ofType(SET_COLUMNS, SET_ROWS),
+    mapTo(setRecommendedDatatypesToColumns())
+);
+
 export const datatableEpics = combineEpics(
-    fetchJSONData
+    fetchJSONData,
+    fetchRecommendedDatatypesToColumns
 );

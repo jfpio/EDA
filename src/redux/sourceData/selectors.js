@@ -6,9 +6,9 @@ import { SOURCE_DATA_REDUCER_NAME } from './reducer';
 
 export const sourceDataSelector = (state) => state[SOURCE_DATA_REDUCER_NAME];
 
-export const columnsNamesSelector = createSelector(
+export const attributesSelector = createSelector(
     sourceDataSelector,
-    (datatableReducer) => datatableReducer.columns
+    (datatableReducer) => datatableReducer.attributes
 );
 
 export const rowsSelector = createSelector(
@@ -29,12 +29,17 @@ export const rowsByVisibleColumnNamesSelector = createSelector(
 );
 
 export const invisibleColumnsNamesSelector = createSelector(
-    columnsNamesSelector,
+    attributesSelector,
     visibleColumnsNamesSelector,
     (columnNames, visibleColumnsNames) => without(visibleColumnsNames, columnNames)
 );
 
-export const attributesSelector = createSelector(
+export const attributesTypesSelector = createSelector(
     sourceDataSelector,
-    (datatableReducer) => values(datatableReducer.attributes)
+    (datatableReducer) => values(datatableReducer.attributesTypes)
+);
+
+export const attributesEntries = createSelector(
+    sourceDataSelector,
+    (datatableReducer) => Object.entries(datatableReducer.attributesTypes)
 );
