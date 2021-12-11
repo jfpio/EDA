@@ -1,10 +1,10 @@
 import React from 'react';
 import { Stack } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { xFieldSelector, yFieldSelector } from '../../redux/chartConfig/selectors';
-import { setField } from '../../redux/chartConfig/actions';
-import { ENCODING_FIELDS, MARKS_FIELDS } from '../../redux/chartConfig/const';
+import { setField } from '../../redux/vegaEncoding/actions';
+import { ENCODING_FIELDS, MARKS_FIELDS } from '../../redux/vegaEncoding/const';
 import { FieldsColumn } from './components/FieldsColumn';
+import { xFieldSelector, yFieldSelector } from '../../redux/vegaEncoding/selectors';
 
 export const ChartConfigDrawer = () => {
     const dispatch = useDispatch();

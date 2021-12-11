@@ -1,4 +1,4 @@
-export const SET_FIELD = 'chartConfig/SET_FIELD';
+export const SET_FIELD = 'vegaEncoding/SET_FIELD';
 export const ENCODING_FIELDS = {
     X: 'X',
     Y: 'Y',

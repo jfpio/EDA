@@ -10,7 +10,7 @@ import {
     PopoverTrigger, Radio, RadioGroup, VStack
 } from '@chakra-ui/react';
 import { AtSignIcon, HamburgerIcon, TimeIcon } from '@chakra-ui/icons';
-import { VEGA_DATA_TYPES } from '../../../redux/chartConfig/const';
+import { VEGA_DATA_TYPES } from '../../../redux/vegaEncoding/const';
 
 export const FieldPopover = ({ value, onChange }) => {
     const [isOpen, setIsOpen] = React.useState(false);

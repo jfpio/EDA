@@ -6,7 +6,7 @@ import {
     SET_COLUMNS,
     SET_ROWS
 } from './const';
-import { VEGA_DATA_TYPES } from '../chartConfig/const';
+import { VEGA_DATA_TYPES } from '../vegaEncoding/const';
 
 const initialState = {
     columns: [],

@@ -6,8 +6,8 @@ const initialState = {
     [ENCODING_FIELDS.Y]: null
 };
 
-export const CHART_CONFIG_REDUCER_NAME = 'chartConfigReducer';
-export const chartConfigReducer = createReducer(initialState, (builder) => {
+export const VEGA_ENCODING_REDUCER_NAME = 'vegaEncodingReducer';
+export const vegaEncodingReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(SET_FIELD, (state, { fieldId, attributeId }) => {
             state[fieldId] = attributeId;

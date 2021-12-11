@@ -1,16 +1,16 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { CHART_CONFIG_REDUCER_NAME } from './reducer';
+import { VEGA_ENCODING_REDUCER_NAME } from './reducer';
 import { ENCODING_FIELDS } from './const';
 
-export const chartConfigSelector = (state) => state[CHART_CONFIG_REDUCER_NAME];
+export const vegaEncodingSelector = (state) => state[VEGA_ENCODING_REDUCER_NAME];
 
 export const xFieldSelector = createSelector(
-    chartConfigSelector,
+    vegaEncodingSelector,
     (chartConfig) => chartConfig[ENCODING_FIELDS.X]
 );
 
 export const yFieldSelector = createSelector(
-    chartConfigSelector,
+    vegaEncodingSelector,
     (chartConfig) => chartConfig[ENCODING_FIELDS.Y]
 );
 
