@@ -50,4 +50,18 @@ describe('redux test for sourceData reducer', () => {
 
         expect(await screen.findByText('Production Budget')).toBeInTheDocument();
     });
+    it('should drag and drop into encoding field', async () => {
+        renderWithRedux(<App />);
+        fireEvent.click(screen.getByRole('button', { name: 'Load Data' }));
+
+        const dropzone = screen.getByText('X field').nextSibling;
+        const attribute = await screen.findByText('US Gross');
+
+        fireEvent.dragStart(attribute);
+        fireEvent.dragEnter(dropzone);
+        fireEvent.dragOver(dropzone);
+        fireEvent.drop(dropzone);
+
+        expect(screen.queryAllByText('US Gross').length === 2).toBeTruthy();
+    });
 });
