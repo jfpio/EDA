@@ -5,7 +5,6 @@ import { isNil } from 'ramda';
 import { Dropzone } from '../../../components/DnD/DropZone';
 import { DnDItemTypes } from '../../../DnD';
 import { DraggableTag } from '../../../components/DnD/DraggableTag';
-import { givenTypeOrNull } from '../../../utils/propTypes';
 
 export const Field = ({
     fieldId, label, value, onDrop
@@ -40,6 +39,10 @@ export const Field = ({
 Field.propTypes = {
     fieldId: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    value: givenTypeOrNull(PropTypes.string).isRequired,
+    value: PropTypes.string,
     onDrop: PropTypes.func.isRequired
+};
+
+Field.defaultProps = {
+    value: null
 };

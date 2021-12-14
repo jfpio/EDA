@@ -34,6 +34,7 @@ export const ChartConfigDrawer = () => {
             {
                 columns.map(({ fields, label }) => (
                     <FieldsColumn
+                        key={label}
                         onDrop={(fieldId, tagId) => dispatch(setField(fieldId, tagId))}
                         fields={fields}
                         label={label}

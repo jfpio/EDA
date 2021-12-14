@@ -14,6 +14,8 @@
     "arquero": "^4.8.7",
     "framer-motion": "^4.1.17",
     "immer": "^9.0.6",
+    "jest-canvas-mock": "^2.3.1",
+    "msw": "^0.36.3",
     "ramda": "^0.27.1",
     "react": "^17.0.2",
     "react-dnd": "^14.0.4",

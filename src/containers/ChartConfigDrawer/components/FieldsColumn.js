@@ -8,7 +8,7 @@ export const FieldsColumn = ({ fields, onDrop, label }) => (
         <Text fontSize="lg" fontWeight={600}>{label}</Text>
         {
             fields.map(({ id, label, value }) => (
-                <Field fieldId={id} label={label} value={value} onDrop={onDrop} />
+                <Field key={id} fieldId={id} label={label} value={value} onDrop={onDrop} />
             ))
         }
     </Box>

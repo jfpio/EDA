@@ -10,7 +10,7 @@ import {
 import { VEGA_DATA_TYPES } from '../vegaEncoding/const';
 import { getRecommendedDatatype } from './utils';
 
-const initialState = {
+export const sourceDataInitialState = {
     attributes: [],
     attributesTypes: {},
     visibleColumns: [],
@@ -18,7 +18,7 @@ const initialState = {
 };
 
 export const SOURCE_DATA_REDUCER_NAME = 'sourceDataReducer';
-export const sourceDataReducer = createReducer(initialState, (builder) => {
+export const sourceDataReducer = createReducer(sourceDataInitialState, (builder) => {
     builder
         .addCase(SET_COLUMNS, (state, { columnsNames }) => {
             state.attributes = columnsNames;
