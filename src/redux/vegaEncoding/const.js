@@ -20,3 +20,8 @@ export const VEGA_DATA_TYPES = {
     QUANTITATIVE: 'QUANTITATIVE',
     TEMPORAL: 'TEMPORAL'
 };
+
+export const FIELDS_TYPES = {
+    ENCODING: 'encodingFields',
+    MARKS: 'marks'
+};
