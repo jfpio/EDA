@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import {
-    pipe, props, values, without
+    pipe, props, without
 } from 'ramda';
 import { SOURCE_DATA_REDUCER_NAME } from './reducer';
 
@@ -36,7 +36,7 @@ export const invisibleColumnsNamesSelector = createSelector(
 
 export const attributesTypesSelector = createSelector(
     sourceDataSelector,
-    (datatableReducer) => values(datatableReducer.attributesTypes)
+    (datatableReducer) => datatableReducer.attributesTypes
 );
 
 export const attributesEntries = createSelector(

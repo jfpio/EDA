@@ -15,10 +15,10 @@ export const MARKS_FIELDS = {
 };
 
 export const VEGA_DATA_TYPES = {
-    NOMINAL: 'NOMINAL',
-    ORDINAL: 'ORDINAL',
-    QUANTITATIVE: 'QUANTITATIVE',
-    TEMPORAL: 'TEMPORAL'
+    NOMINAL: 'nominal',
+    ORDINAL: 'ordinal',
+    QUANTITATIVE: 'quantitative',
+    TEMPORAL: 'temporal'
 };
 
 export const FIELDS_TYPES = {
