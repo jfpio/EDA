@@ -1,7 +1,7 @@
 import * as vl from 'vega-lite-api';
 
 class VegaSpecificationCreator {
-    constructor(dataSpecification, mark, autosize) {
+    constructor(dataSpecification = { name: 'table' }, mark = 'circle', autosize = 'pad') {
         this.dataSpecification = dataSpecification;
         this.autosize = autosize;
         this.mark = mark;

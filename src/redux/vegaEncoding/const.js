@@ -1,3 +1,5 @@
+import * as vl from 'vega-lite-api';
+
 export const SET_FIELD = 'vegaEncoding/SET_FIELD';
 export const ENCODING_FIELDS = {
     X: 'X',
@@ -24,4 +26,11 @@ export const VEGA_DATA_TYPES = {
 export const FIELDS_TYPES = {
     ENCODING: 'encodingFields',
     MARKS: 'marks'
+};
+
+export const ENCODING_FIELDS_TO_CHANNEL_MAPPING = {
+    X: vl.x(),
+    Y: vl.y(),
+    ROW: vl.row(),
+    COLUMN: vl.column()
 };
