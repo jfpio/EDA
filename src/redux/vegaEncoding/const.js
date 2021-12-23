@@ -29,8 +29,13 @@ export const FIELDS_TYPES = {
 };
 
 export const ENCODING_FIELDS_TO_CHANNEL_MAPPING = {
-    X: vl.x(),
-    Y: vl.y(),
-    ROW: vl.row(),
-    COLUMN: vl.column()
+    [ENCODING_FIELDS.X]: vl.x(),
+    [ENCODING_FIELDS.Y]: vl.y(),
+    [ENCODING_FIELDS.ROW]: vl.row(),
+    [ENCODING_FIELDS.COLUMN]: vl.column(),
+    [MARKS_FIELDS.SIZE]: vl.size(),
+    [MARKS_FIELDS.COLOR]: vl.color(),
+    [MARKS_FIELDS.SHAPE]: vl.shape(),
+    [MARKS_FIELDS.DETAIL]: vl.detail(),
+    [MARKS_FIELDS.TEXT]: vl.text()
 };

@@ -1,5 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { isNil, map } from 'ramda';
+import {
+    isNil, map, mergeRight
+} from 'ramda';
 import { VEGA_ENCODING_REDUCER_NAME } from './reducer';
 import { FIELDS_TYPES } from './const';
 import { attributesTypesSelector } from '../sourceData/selectors';
@@ -16,10 +18,11 @@ export const marksFieldsSelector = createSelector(
     (vegaEncoding) => vegaEncoding[FIELDS_TYPES.MARKS]
 );
 
-const fieldsAndTheirTypesSelectorFactory = (fieldsSelector) => createSelector(
-    fieldsSelector,
+export const fieldsAndTheirTypesSelector = createSelector(
+    encodingFieldsSelector,
+    marksFieldsSelector,
     attributesTypesSelector,
-    (encodingFields, attributesTypes) => map((id) => {
+    (encodingFields, marksFields, attributesTypes) => map((id) => {
         if (isNil(id)) {
             return null;
         }
@@ -27,8 +30,5 @@ const fieldsAndTheirTypesSelectorFactory = (fieldsSelector) => createSelector(
             id,
             type: attributesTypes[id]
         });
-    }, encodingFields)
+    }, mergeRight(encodingFields, marksFields))
 );
-
-export const encodingFieldsAndTheirTypesSelector = fieldsAndTheirTypesSelectorFactory(encodingFieldsSelector);
-export const marksFieldsAndTheirTypesSelector = fieldsAndTheirTypesSelectorFactory(marksFieldsSelector);

@@ -41,6 +41,6 @@ export const sourceDataReducer = createReducer(sourceDataInitialState, (builder)
             state.visibleColumns = state.visibleColumns.filter((name) => name !== columnName);
         })
         .addCase(SET_ATTRIBUTE_TYPE, (state, { attributeId, newType }) => {
-            state.attributesTypes[attributeId].datatype = newType;
+            state.attributesTypes[attributeId] = newType;
         });
 });
