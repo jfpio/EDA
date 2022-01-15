@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { defaultTo, mapObjIndexed } from 'ramda';
 import {
-    ADD_COLUMN_TO_VISIBLE_COLUMNS_NAMES,
+    ADD_COLUMN_TO_VISIBLE_COLUMNS_NAMES, GET_JSON_DATA_REQUEST,
     REMOVE_COLUMN_FROM_VISIBLE_COLUMNS_NAMES,
     SET_ATTRIBUTE_TYPE,
     SET_COLUMNS, SET_RECOMMENDED_DATATYPES_TO_COLUMNS,
@@ -11,6 +11,7 @@ import { VEGA_DATA_TYPES } from '../vegaEncoding/const';
 import { getRecommendedDatatype } from './utils';
 
 export const sourceDataInitialState = {
+    currentDatasetPath: '',
     attributes: [],
     attributesTypes: {},
     visibleColumns: [],
@@ -20,6 +21,9 @@ export const sourceDataInitialState = {
 export const SOURCE_DATA_REDUCER_NAME = 'sourceDataReducer';
 export const sourceDataReducer = createReducer(sourceDataInitialState, (builder) => {
     builder
+        .addCase(GET_JSON_DATA_REQUEST, (state, { url }) => {
+            state.currentDatasetPath = url;
+        })
         .addCase(SET_COLUMNS, (state, { columnsNames }) => {
             state.attributes = columnsNames;
             state.visibleColumns = columnsNames;

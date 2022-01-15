@@ -22,12 +22,36 @@ const moviesMock = [
         Title: 'Slam', 'US Gross': 1009819, 'Worldwide Gross': 1087521, 'US DVD Sales': null, 'Production Budget': 1000000, 'Release Date': 'Oct 09 1998', 'MPAA Rating': 'R', 'Running Time min': null, Distributor: 'Trimark', Source: 'Original Screenplay', 'Major Genre': 'Drama', 'Creative Type': 'Contemporary Fiction', Director: null, 'Rotten Tomatoes Rating': 62, 'IMDB Rating': 3.4, 'IMDB Votes': 165
     }];
 
+const antibioticsMock = [
+    {
+        Bacteria: 'Aerobacter aerogenes',
+        Penicillin: 870,
+        Streptomycin: 1,
+        Neomycin: 1.6,
+        Gram_Staining: 'negative',
+        Genus: 'other'
+    },
+    {
+        Bacteria: 'Bacillus anthracis',
+        Penicillin: 0.001,
+        Streptomycin: 0.01,
+        Neomycin: 0.007,
+        Gram_Staining: 'positive',
+        Genus: 'other'
+    }
+];
+
 describe('redux test for sourceData reducer', () => {
     const handlers = [
         rest.get('/movies.json',
             (req, res, ctx) => res(
                 ctx.json(moviesMock), ctx.delay(50)
+            )),
+        rest.get('/antibiotics.json',
+            (req, res, ctx) => res(
+                ctx.json(antibioticsMock), ctx.delay(50)
             ))
+
     ];
 
     const server = setupServer(...handlers);
@@ -41,18 +65,33 @@ describe('redux test for sourceData reducer', () => {
     // Disable API mocking after the tests are done.
     afterAll(() => server.close());
 
-    it('should fetch data', async () => {
+    it('should open modal with datasets and fetch data', async () => {
         renderWithRedux(<App />);
 
-        expect(screen.getByText('Load some data first')).toBeInTheDocument();
+        fireEvent.click(screen.getByRole('button', { name: 'Load dataset' }));
 
-        fireEvent.click(screen.getByRole('button', { name: 'Load Data' }));
+        const radio = screen.getByText('Movies dataset');
 
-        expect(await screen.findByText('Production Budget')).toBeInTheDocument();
+        fireEvent.click(radio);
+
+        expect(await screen.findByText('Director')).toBeInTheDocument();
+    });
+    it('should open modal and change dataset with datasets and fetch data', async () => {
+        renderWithRedux(<App />);
+        fireEvent.click(screen.getByRole('button', { name: 'Load dataset' }));
+        const moviesRadio = screen.getByText('Movies dataset');
+        fireEvent.click(moviesRadio);
+
+        const antibioticsRadio = screen.getByText('Antibiotics dataset from 50\'s');
+        fireEvent.click(antibioticsRadio);
+
+        expect(await screen.findByText('Genus')).toBeInTheDocument();
     });
     it.each(['X field', 'Y field', 'Row', 'Column', 'Size', 'Color', 'Shape', 'Detail', 'Text'])('should drag and drop attribute into %p', async (encodingLabel) => {
         renderWithRedux(<App />);
-        fireEvent.click(screen.getByRole('button', { name: 'Load Data' }));
+        fireEvent.click(screen.getByRole('button', { name: 'Load dataset' }));
+        const radio = screen.getByText('Movies dataset');
+        fireEvent.click(radio);
 
         const dropzone = screen.getByText(encodingLabel).nextSibling;
         const attribute = await screen.findByText('US Gross');

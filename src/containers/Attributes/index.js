@@ -14,7 +14,7 @@ export const Attributes = () => {
             {
                 attributesTypes.length === 0 ? (
                     <Text>
-                        Load some data first
+                        Load some dataset first
                     </Text>
                 ) : attributesTypes.map(([id, datatype]) => (
                     <Attribute

@@ -6,20 +6,25 @@ import { SOURCE_DATA_REDUCER_NAME } from './reducer';
 
 export const sourceDataSelector = (state) => state[SOURCE_DATA_REDUCER_NAME];
 
+export const currentDatasetPathSelector = createSelector(
+    sourceDataSelector,
+    (sourceDataReducer) => sourceDataReducer.currentDatasetPath
+);
+
 export const attributesSelector = createSelector(
     sourceDataSelector,
-    (datatableReducer) => datatableReducer.attributes
+    (sourceDataReducer) => sourceDataReducer.attributes
 );
 
 export const rowsSelector = createSelector(
     sourceDataSelector,
     // Without deepcloning the error occurs on the vega component
-    (datatableReducer) => pipe(JSON.stringify, JSON.parse)(datatableReducer.rows)
+    (sourceDataReducer) => pipe(JSON.stringify, JSON.parse)(sourceDataReducer.rows)
 );
 
 export const visibleColumnsNamesSelector = createSelector(
     sourceDataSelector,
-    (datatableReducer) => datatableReducer.visibleColumns
+    (sourceDataReducer) => sourceDataReducer.visibleColumns
 );
 
 export const rowsByVisibleColumnNamesSelector = createSelector(
@@ -36,10 +41,10 @@ export const invisibleColumnsNamesSelector = createSelector(
 
 export const attributesTypesSelector = createSelector(
     sourceDataSelector,
-    (datatableReducer) => datatableReducer.attributesTypes
+    (sourceDataReducer) => sourceDataReducer.attributesTypes
 );
 
 export const attributesEntries = createSelector(
     sourceDataSelector,
-    (datatableReducer) => Object.entries(datatableReducer.attributesTypes)
+    (sourceDataReducer) => Object.entries(sourceDataReducer.attributesTypes)
 );
