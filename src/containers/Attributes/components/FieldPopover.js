@@ -9,7 +9,10 @@ import {
     PopoverHeader,
     PopoverTrigger, Radio, RadioGroup, VStack
 } from '@chakra-ui/react';
-import { AtSignIcon, HamburgerIcon, TimeIcon } from '@chakra-ui/icons';
+import {
+    BsHash, BsSortAlphaDown, BsSortNumericDown
+} from 'react-icons/bs';
+import { TimeIcon } from '@chakra-ui/icons';
 import { VEGA_DATA_TYPES } from '../../../redux/vegaEncoding/const';
 
 export const FieldPopover = ({ value, onChange }) => {
@@ -22,10 +25,12 @@ export const FieldPopover = ({ value, onChange }) => {
             case VEGA_DATA_TYPES.TEMPORAL:
                 return <TimeIcon />;
             case VEGA_DATA_TYPES.QUANTITATIVE:
-                return <HamburgerIcon />;
+                return <BsSortNumericDown size="1.5em" />;
+            case VEGA_DATA_TYPES.ORDINAL:
+                return <BsSortAlphaDown size="1.5em" />;
             case VEGA_DATA_TYPES.NOMINAL:
             default:
-                return <AtSignIcon />;
+                return <BsHash size="1.5em" />;
         }
     };
     return (

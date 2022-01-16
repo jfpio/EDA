@@ -20,6 +20,7 @@
     "react-dnd-test-backend": "^14.0.1",
     "react-dnd-test-utils": "^14.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-scripts": "^4.0.3",
     "react-vega": "^7.4.4",
