@@ -16,10 +16,12 @@ export const ChartConfigDrawer = () => {
         {
             id: FIELDS_TYPES.ENCODING,
             label: 'Encoding',
-            fields: [{ id: ENCODING_FIELDS.X, label: 'X field', value: encodingFields[ENCODING_FIELDS.X] },
+            fields: [
+                { id: ENCODING_FIELDS.X, label: 'X field', value: encodingFields[ENCODING_FIELDS.X] },
                 { id: ENCODING_FIELDS.Y, label: 'Y field', value: encodingFields[ENCODING_FIELDS.Y] },
                 { id: ENCODING_FIELDS.ROW, label: 'Row', value: encodingFields[ENCODING_FIELDS.ROW] },
-                { id: ENCODING_FIELDS.COLUMN, label: 'Column', value: encodingFields[ENCODING_FIELDS.COLUMN] }]
+                { id: ENCODING_FIELDS.COLUMN, label: 'Column', value: encodingFields[ENCODING_FIELDS.COLUMN] }
+            ]
         },
         {
             id: FIELDS_TYPES.MARKS,

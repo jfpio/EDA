@@ -1,6 +1,6 @@
 import * as vl from 'vega-lite-api';
 import { isNil } from 'ramda';
-import { ENCODING_FIELDS_TO_CHANNEL_MAPPING } from '../../redux/vegaEncoding/const';
+import { AGGREGATE_ATTRIBUTES_TYPES, ENCODING_FIELDS_TO_CHANNEL_MAPPING } from '../const';
 
 class VegaSpecificationCreator {
     constructor(dataSpecification = { name: 'table' }, mark = 'circle', autosize = 'pad') {
@@ -33,9 +33,20 @@ class VegaSpecificationCreator {
 
     loadEncodingChannels(fieldsMapping) {
         const notNullEncodingChannels = Object.entries(fieldsMapping)
-            .filter(([, field]) => !isNil(field?.id) && !isNil(field?.type));
+            .filter(([, field]) => !isNil(field?.id));
 
-        notNullEncodingChannels.forEach(([channelName, { id, type }]) => this.loadEncodingChannel(id, type, ENCODING_FIELDS_TO_CHANNEL_MAPPING[channelName]));
+        notNullEncodingChannels.forEach(([channelName, { id, type }]) => {
+            if (Object.values(AGGREGATE_ATTRIBUTES_TYPES).includes(id)) {
+                this.loadEncodingChannelWithAggregateId(id, ENCODING_FIELDS_TO_CHANNEL_MAPPING[channelName]);
+            }
+            else {
+                this.loadEncodingChannel(id, type, ENCODING_FIELDS_TO_CHANNEL_MAPPING[channelName]);
+            }
+        });
+    }
+
+    loadEncodingChannelWithAggregateId(id, channel) {
+        this.encodings.push(channel[id]());
     }
 
     loadEncodingChannel(id, type, channel) {

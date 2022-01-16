@@ -7,6 +7,7 @@ import { DatasetsModal } from './components/DatasetsModal';
 import { FILE_PATHS } from '../../redux/sourceData/const';
 import { getJsonDataRequest } from '../../redux/sourceData/actions';
 import { currentDatasetPathSelector } from '../../redux/sourceData/selectors';
+import { AggregateAttributes } from '../AggregateAttributes';
 
 export const DataSourceDrawer = () => {
     const dispatch = useDispatch();
@@ -29,6 +30,7 @@ export const DataSourceDrawer = () => {
                 datasets={FILE_PATHS}
             />
             <Attributes />
+            <AggregateAttributes />
         </Stack>
     );
 };

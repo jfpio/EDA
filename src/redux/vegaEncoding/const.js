@@ -28,6 +28,15 @@ export const FIELDS_TYPES = {
     MARKS: 'marks'
 };
 
+export const AGGREGATE_ATTRIBUTES_TYPES = {
+    COUNT: 'count'
+};
+
+export const AGGREGATE_ATTRIBUTES_MAPPING = {
+    [AGGREGATE_ATTRIBUTES_TYPES.COUNT]: vl.count(),
+    [AGGREGATE_ATTRIBUTES_TYPES.AVERAGE]: vl.average()
+};
+
 export const ENCODING_FIELDS_TO_CHANNEL_MAPPING = {
     [ENCODING_FIELDS.X]: vl.x(),
     [ENCODING_FIELDS.Y]: vl.y(),

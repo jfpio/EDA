@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Flex } from '@chakra-ui/react';
 import { VegaLite } from 'react-vega';
 import { VEGA_DATA_TYPES } from '../../redux/vegaEncoding/const';
-import VegaSpecificationCreator from '../../utils/vegaSpecificationCreator/VegaSpecificationCreator';
+import VegaSpecificationCreator from '../../redux/vegaEncoding/vegaSpecificationCreator/VegaSpecificationCreator';
 
 export const VegaCharts = ({
     data, encodingFields

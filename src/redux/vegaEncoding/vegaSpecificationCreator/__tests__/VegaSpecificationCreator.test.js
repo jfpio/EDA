@@ -1,6 +1,6 @@
 import * as vl from 'vega-lite-api';
 import VegaSpecificationCreator from '../VegaSpecificationCreator';
-import { ENCODING_FIELDS, MARKS_FIELDS, VEGA_DATA_TYPES } from '../../../redux/vegaEncoding/const';
+import { ENCODING_FIELDS, MARKS_FIELDS, VEGA_DATA_TYPES } from '../../const';
 
 describe('VegaSpecificationCreator creates vega specification from parameters', () => {
     const baseSpecification = {
