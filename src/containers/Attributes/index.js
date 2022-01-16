@@ -13,7 +13,11 @@ export const Attributes = () => {
         <Stack w="full" h="full" p={2} bg="gray.50" borderRadius="lg">
             {
                 attributesTypes.length === 0 ? (
-                    <Text>
+                    <Text
+                        fontSize="sm"
+                        color="gray.500"
+                        textAlign="center"
+                    >
                         Load some dataset first
                     </Text>
                 ) : attributesTypes.map(([id, datatype]) => (
