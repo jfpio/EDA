@@ -13,7 +13,7 @@ import {
 import { fetchColumnsAndRowsFromJSON } from './utils';
 import { setColumns, setRecommendedDatatypesToColumns, setRows } from './actions';
 
-const fetchJSONData = (action$) => action$.pipe(
+const fetchJSONDataEpic = (action$) => action$.pipe(
     ofType(GET_JSON_DATA_REQUEST),
     switchMap(({ url }) => fromFetch(url, {
         selector: (response) => response.json()
@@ -26,12 +26,12 @@ const fetchJSONData = (action$) => action$.pipe(
     catchError((e) => console.log(e))
 );
 
-const fetchRecommendedDatatypesToColumns = (action$) => action$.pipe(
+const fetchRecommendedDatatypesToColumnsEpic = (action$) => action$.pipe(
     ofType(SET_COLUMNS, SET_ROWS),
     mapTo(setRecommendedDatatypesToColumns())
 );
 
 export const datatableEpics = combineEpics(
-    fetchJSONData,
-    fetchRecommendedDatatypesToColumns
+    fetchJSONDataEpic,
+    fetchRecommendedDatatypesToColumnsEpic
 );
