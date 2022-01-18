@@ -10,13 +10,13 @@ import {
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import {
-    rowsByVisibleColumnNamesSelector,
-    visibleColumnsNamesSelector
+    attributesSelector,
+    rowsSelector
 } from '../../../../redux/sourceData/selectors';
 
 export const DataTable = () => {
-    const columnsNames = useSelector(visibleColumnsNamesSelector);
-    const rows = useSelector(rowsByVisibleColumnNamesSelector);
+    const columnsNames = useSelector(attributesSelector);
+    const rows = useSelector(rowsSelector);
     return (
         <Flex direction="column" overflow="auto">
             <Table variant="striped">
@@ -24,7 +24,7 @@ export const DataTable = () => {
                     <Tr>
                         {
                             (columnsNames.length === 0) ? (
-                                <Th>By wyświetlić tabelę załaduj dane</Th>
+                                <Th>To show table, please load a dataset</Th>
                             ) : columnsNames.map((columnName) => <Th key={columnName}>{columnName}</Th>)
                         }
                     </Tr>
@@ -33,7 +33,7 @@ export const DataTable = () => {
                     {rows.map((row) => (
                         <Tr>
                             {
-                                row.map((value) => (
+                                Object.values(row).map((value) => (
                                     <Td>{value}</Td>
                                 ))
                             }

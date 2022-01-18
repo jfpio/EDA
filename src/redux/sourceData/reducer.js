@@ -1,8 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { defaultTo, mapObjIndexed } from 'ramda';
 import {
-    ADD_COLUMN_TO_VISIBLE_COLUMNS_NAMES, GET_JSON_DATA_REQUEST,
-    REMOVE_COLUMN_FROM_VISIBLE_COLUMNS_NAMES,
+    GET_JSON_DATA_REQUEST,
     SET_ATTRIBUTE_TYPE,
     SET_COLUMNS, SET_RECOMMENDED_DATATYPES_TO_COLUMNS,
     SET_ROWS
@@ -14,7 +13,6 @@ export const sourceDataInitialState = {
     currentDatasetPath: '',
     attributes: [],
     attributesTypes: {},
-    visibleColumns: [],
     rows: []
 };
 
@@ -26,7 +24,6 @@ export const sourceDataReducer = createReducer(sourceDataInitialState, (builder)
         })
         .addCase(SET_COLUMNS, (state, { columnsNames }) => {
             state.attributes = columnsNames;
-            state.visibleColumns = columnsNames;
             state.attributesTypes = columnsNames.reduce((acc, name) => ({
                 ...acc,
                 [name]: VEGA_DATA_TYPES.NOMINAL
@@ -37,12 +34,6 @@ export const sourceDataReducer = createReducer(sourceDataInitialState, (builder)
         })
         .addCase(SET_RECOMMENDED_DATATYPES_TO_COLUMNS, (state) => {
             state.attributesTypes = mapObjIndexed((_, id) => getRecommendedDatatype(defaultTo({}, state.rows[0])[id]), state.attributesTypes);
-        })
-        .addCase(ADD_COLUMN_TO_VISIBLE_COLUMNS_NAMES, (state, { columnName }) => {
-            state.visibleColumns.push(columnName);
-        })
-        .addCase(REMOVE_COLUMN_FROM_VISIBLE_COLUMNS_NAMES, (state, { columnName }) => {
-            state.visibleColumns = state.visibleColumns.filter((name) => name !== columnName);
         })
         .addCase(SET_ATTRIBUTE_TYPE, (state, { attributeId, newType }) => {
             state.attributesTypes[attributeId] = newType;
