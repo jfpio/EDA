@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import {
     rowsByVisibleColumnNamesSelector,
     visibleColumnsNamesSelector
-} from '../../redux/sourceData/selectors';
+} from '../../../../redux/sourceData/selectors';
 
 export const DataTable = () => {
     const columnsNames = useSelector(visibleColumnsNamesSelector);

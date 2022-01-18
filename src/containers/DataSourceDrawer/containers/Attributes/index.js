@@ -1,9 +1,9 @@
 import React from 'react';
 import { Stack, Text } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { attributesEntries } from '../../redux/sourceData/selectors';
+import { attributesEntries } from '../../../../redux/sourceData/selectors';
 import { Attribute } from './components/Attribute';
-import { setAttributeType } from '../../redux/sourceData/actions';
+import { setAttributeType } from '../../../../redux/sourceData/actions';
 
 export const Attributes = () => {
     const attributesTypes = useSelector(attributesEntries);

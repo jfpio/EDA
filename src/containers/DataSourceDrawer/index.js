@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Stack, useDisclosure } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Attributes } from '../Attributes';
+import { Attributes } from './containers/Attributes';
 import { toggleView } from '../WorkingSpace/actions';
 import { DatasetsModal } from './components/DatasetsModal';
 import { FILE_PATHS } from '../../redux/sourceData/const';
 import { getJsonDataRequest } from '../../redux/sourceData/actions';
 import { currentDatasetPathSelector } from '../../redux/sourceData/selectors';
-import { AggregateAttributes } from '../AggregateAttributes';
+import { AggregateAttributes } from './containers/AggregateAttributes';
 
 export const DataSourceDrawer = () => {
     const dispatch = useDispatch();

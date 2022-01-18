@@ -13,7 +13,7 @@ import {
     BsHash, BsSortAlphaDown, BsSortNumericDown
 } from 'react-icons/bs';
 import { TimeIcon } from '@chakra-ui/icons';
-import { VEGA_DATA_TYPES } from '../../../redux/vegaEncoding/const';
+import { VEGA_DATA_TYPES } from '../../../../../redux/vegaEncoding/const';
 
 export const FieldPopover = ({ value, onChange }) => {
     const [isOpen, setIsOpen] = React.useState(false);

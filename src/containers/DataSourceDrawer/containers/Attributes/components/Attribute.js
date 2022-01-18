@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DnDItemTypes } from '../../../DnD';
-import { DraggableTag } from '../../../components/DnD/DraggableTag';
+import { DnDItemTypes } from '../../../../../DnD';
+import { DraggableTag } from '../../../../../components/DnD/DraggableTag';
 import { FieldPopover } from './FieldPopover';
-import { VEGA_DATA_TYPES } from '../../../redux/vegaEncoding/const';
+import { VEGA_DATA_TYPES } from '../../../../../redux/vegaEncoding/const';
 
 export const Attribute = ({
     name,
