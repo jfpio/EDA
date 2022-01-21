@@ -73,7 +73,6 @@ describe('redux test for sourceData reducer', () => {
         const radio = screen.getByText('Movies dataset');
 
         fireEvent.click(radio);
-
         expect(await screen.findByText('Director')).toBeInTheDocument();
     });
     it('should open modal and change dataset with datasets and fetch data', async () => {
@@ -87,7 +86,7 @@ describe('redux test for sourceData reducer', () => {
 
         expect(await screen.findByText('Genus')).toBeInTheDocument();
     });
-    it.each(['X field', 'Y field', 'Row', 'Column', 'Size', 'Color', 'Shape', 'Detail', 'Text'])('should drag and drop attribute into %p', async (encodingLabel) => {
+    it.each(['X field', 'Y field', 'Row', 'Column', 'Size', 'Color', 'Shape'])('should drag and drop attribute into %p', async (encodingLabel) => {
         renderWithRedux(<App />);
         fireEvent.click(screen.getByRole('button', { name: 'Load dataset' }));
         const radio = screen.getByText('Movies dataset');
