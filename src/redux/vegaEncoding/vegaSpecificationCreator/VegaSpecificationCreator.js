@@ -3,7 +3,7 @@ import { isNil } from 'ramda';
 import { AGGREGATE_ATTRIBUTES_TYPES, ENCODING_FIELDS_TO_CHANNEL_MAPPING } from '../const';
 
 class VegaSpecificationCreator {
-    constructor(dataSpecification = { name: 'table' }, mark = 'circle', autosize = 'pad') {
+    constructor(dataSpecification = { name: 'table' }, mark = 'point', autosize = 'pad') {
         this.dataSpecification = dataSpecification;
         this.autosize = autosize;
         this.mark = mark;
