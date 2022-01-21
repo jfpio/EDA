@@ -28,9 +28,7 @@ export const ChartConfigDrawer = () => {
             label: 'Marks',
             fields: [{ id: MARKS_FIELDS.SIZE, label: 'Size', value: marksFields[MARKS_FIELDS.SIZE] },
                 { id: MARKS_FIELDS.COLOR, label: 'Color', value: marksFields[MARKS_FIELDS.COLOR] },
-                { id: MARKS_FIELDS.SHAPE, label: 'Shape', value: marksFields[MARKS_FIELDS.SHAPE] },
-                { id: MARKS_FIELDS.DETAIL, label: 'Detail', value: marksFields[MARKS_FIELDS.DETAIL] },
-                { id: MARKS_FIELDS.TEXT, label: 'Text', value: marksFields[MARKS_FIELDS.TEXT] }]
+                { id: MARKS_FIELDS.SHAPE, label: 'Shape', value: marksFields[MARKS_FIELDS.SHAPE] }]
         }
     ];
 
