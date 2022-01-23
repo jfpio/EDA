@@ -1,10 +1,10 @@
 import React from 'react';
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
 import { Header } from '../Header';
-import { DataSourceDrawer } from '../DataSourceDrawer';
+import { DataSource } from '../DataSource';
 import { WorkingSpace } from '../WorkingSpace';
 import { Footer } from '../Footer';
-import { ChartConfigDrawer } from '../ChartConfigDrawer';
+import { ChartConfig } from '../ChartConfig';
 
 export const MainView = () => (
     <Flex h="100vh" p={6}>
@@ -17,8 +17,8 @@ export const MainView = () => (
             <GridItem gridColumn="1 / 4">
                 <Header />
             </GridItem>
-            <DataSourceDrawer />
-            <ChartConfigDrawer />
+            <DataSource />
+            <ChartConfig />
             <WorkingSpace />
             <GridItem gridColumn="1 / 4">
                 <Footer />

@@ -8,7 +8,7 @@ import {
     encodingFieldsSelector, marksFieldsSelector
 } from '../../redux/vegaEncoding/selectors';
 
-export const ChartConfigDrawer = () => {
+export const ChartConfig = () => {
     const dispatch = useDispatch();
     const encodingFields = useSelector(encodingFieldsSelector);
     const marksFields = useSelector(marksFieldsSelector);

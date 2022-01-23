@@ -9,7 +9,7 @@ import { getJsonDataRequest } from '../../redux/sourceData/actions';
 import { currentDatasetPathSelector } from '../../redux/sourceData/selectors';
 import { AggregateAttributes } from './containers/AggregateAttributes';
 
-export const DataSourceDrawer = () => {
+export const DataSource = () => {
     const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const currentDatasetPath = useSelector(currentDatasetPathSelector);
