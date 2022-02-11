@@ -89,17 +89,19 @@ describe('redux test for sourceData reducer', () => {
     it.each(['X field', 'Y field', 'Row', 'Column', 'Size', 'Color', 'Shape'])('should drag and drop attribute into %p', async (encodingLabel) => {
         renderWithRedux(<App />);
         fireEvent.click(screen.getByRole('button', { name: 'Load dataset' }));
-        const radio = screen.getByText('Movies dataset');
+        const radio = screen.getByText('Antibiotics dataset from 50\'s');
         fireEvent.click(radio);
 
+        await new Promise(process.nextTick);
+
         const dropzone = screen.getByText(encodingLabel).nextSibling;
-        const attribute = await screen.findByText('US Gross');
+        const attribute = await screen.findByText('Bacteria');
 
         fireEvent.dragStart(attribute);
         fireEvent.dragEnter(dropzone);
         fireEvent.dragOver(dropzone);
         fireEvent.drop(dropzone);
 
-        expect(screen.queryAllByText('US Gross').length === 2).toBeTruthy();
+        expect(screen.queryAllByText('Bacteria').length === 2).toBeTruthy();
     });
 });

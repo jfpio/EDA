@@ -10,7 +10,7 @@ export const VegaCharts = ({
 }) => {
     const specificationCreator = new VegaSpecificationCreator(
         { name: 'table' },
-        'circle',
+        'point',
         'pad'
     );
 
